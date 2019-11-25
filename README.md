@@ -63,6 +63,7 @@ En sí, el algoritmo de Dijkstra, funciona como una especialización de la [bús
 
 Ejemplo de matriz que se genera (10x10):
 
+---------------------------------------------------------
 | 0  |  8|  Inf  Inf | Inf | Inf  |  9 | Inf  |  2 | Inf|
 | 8  |  0 | Inf  Inf |   9 |   7 | Inf  |  9 | Inf | Inf|
 | Inf | Inf |   0   | 0 |   9  |  9  |  7  Inf |   6  |  5|
