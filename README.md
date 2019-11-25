@@ -63,18 +63,6 @@ En sí, el algoritmo de Dijkstra, funciona como una especialización de la [bús
 
 Ejemplo de matriz que se genera (10x10):
 
----------------------------------------------------------
-| 0  |  8|  Inf  Inf | Inf | Inf  |  9 | Inf  |  2 | Inf|
-| 8  |  0 | Inf  Inf |   9 |   7 | Inf  |  9 | Inf | Inf|
-| Inf | Inf |   0   | 0 |   9  |  9  |  7  Inf |   6  |  5|
-| Inf | Inf |   0  |  0 | Inf | Inf | Inf | Inf | Inf | Inf|
-| Inf |   9 |   9 | Inf |   0 | Inf |   8  |  5 |   5 | Inf|
-| Inf |   7 |   9 | Inf | Inf |   0 |   8 | Inf  |  5 | Inf|
-| 9 | Inf  |  7 | Inf |   8  |  8  |  0   | 8   | 7  |Inf|
-| Inf |   9 | Inf  |Inf |   5 | Inf  |  8   | 0  |  4 | Inf|
-| 2 | Inf  |  6 | Inf |   5  |  5 |   7   | 4 |   0  |  1|
-| Inf | Inf  |  5 | Inf | Inf | Inf | Inf | Inf  |  1  |  0 |
-    
 2. Se construye un árbol con el nodo 0 de inicio. 
 3. Se busca entre **todos los nodos no conectados** al árbol el nodo cuya distancia es menor. Una vez seleccionado, se conecta al árbol.
 4. Se verifica que la distancia ya registrada, sea la más pequeña entre **todos los nodos no conectados**. Si es así, se intercambian los valores. 
