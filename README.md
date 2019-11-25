@@ -8,7 +8,7 @@
 
 ##### Integrantes:
 1. *[Sebastián Medina Medina]* *[A00822311]*
-2. *[Carlos de la Garza]* *[Matrícula]*
+2. *[Carlos de la Garza]* *[A01024712]*
 
 ---
 ## 1. Aspectos generales
@@ -154,6 +154,7 @@ Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 
 ## 7. Gráfica(s) comparativa(s)
 
 ![imagen](https://user-images.githubusercontent.com/19277654/69586232-81cef300-0fa7-11ea-9d08-12a173b1a6d0.png)
+![imagen](https://user-images.githubusercontent.com/19277654/69586980-ccea0580-0fa9-11ea-8395-f353ca5a58d6.png)
 
 ## 8. Interpretación de los resultados
 
