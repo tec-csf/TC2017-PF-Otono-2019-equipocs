@@ -53,15 +53,15 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 3. Solución secuencial
 
-1. Dentro de un método llamado init(), se crea una matriz de NxN lados de forma aleatoria.
-    1 Los valores de la matriz que pertenezcan a la diagonal partiendo del punto matriz[0][0] al matriz[N][N] tienen que valer 0
+1. Se crea una matriz de NxN lados de forma aleatoria.
+    1. Los valores de la matriz que pertenezcan a la diagonal partiendo del punto *matriz[0][0]* al *matriz[N][N]* tienen que valer 0.
+    2. No todos los valores (exceptuando la diagonal) tienen que tener un número aleatoria del rango que se escoga, ya que no todos los nodos tienen unión. Para esto, se le asigna a algunos valores *i4_huge = 2147483647* o *inf*.
+    3. Los valores deben ser simétricos a la otra mitad.
     
-    
-    1. Actual numbers don't matter, just that it's a number
-  1. Ordered sub-list
-    
-    
-    (Ciertos valores tienen que ser 0 porque no todos los nodos tienen conexión). En dicho método se edita la matriz para que la diagonal, partiendo del punto matriz[0][0] al matriz[N][N], valgan 0.        *
+2. Se construye un árbol con el nodo 0 de inicio. 
+3. Se busca entre **todos los nodos no conectados** al árbol el nodo cuya distancia es menor. Una vez seleccionado, se conecta al árbol.
+4. Se verifica que la distancia ya registrada, sea la más pequeña entre **todos los nodos no conectados**. Si es así, se intercambian los valores. 
+5. Una vez todos los nodos conectados a 0, se calculan las distancias mínimas del nodo 0 a todos los nodos restantes.
 
 ## 4. Análisis de los inhibidores del paralelismo
 
