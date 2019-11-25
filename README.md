@@ -75,6 +75,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 En Paralelo con diferentes numeros de threads
 
 32 threads
+
 | Tamaño de entrada | Tiempo |
 | ------------- | ------------- |
 | 50,000  | 31.089246 segundos  |
@@ -86,6 +87,7 @@ En Paralelo con diferentes numeros de threads
 	
 
 16 threads
+
 | Tamaño de entrada | Tiempo |
 | ------------- | ------------- |
 | 50,000  | 24.698513 segundos  |
@@ -96,6 +98,7 @@ En Paralelo con diferentes numeros de threads
 	
 
 8 threads
+
 | Tamaño de entrada | Tiempo |
 | ------------- | ------------- |
 | 50,000  | 13.576044 segundos  |
@@ -106,6 +109,7 @@ En Paralelo con diferentes numeros de threads
 
 
 4 threads
+
 | Tamaño de entrada | Tiempo |
 | ------------- | ------------- |
 | 50,000  | 20.781091 segundos  |
@@ -116,6 +120,7 @@ En Paralelo con diferentes numeros de threads
 
 
 2 threads
+
 | Tamaño de entrada | Tiempo |
 | ------------- | ------------- |
 | 50,000  | 38.237932 segundos  |
@@ -126,6 +131,7 @@ En Paralelo con diferentes numeros de threads
 
 
 1 thread
+
 | Tamaño de entrada | Tiempo |
 | ------------- | ------------- |
 | 50,000  | 72.038223 segundos  |
