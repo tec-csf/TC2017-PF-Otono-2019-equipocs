@@ -145,7 +145,7 @@ En Paralelo con diferentes numeros de threads
 
 ## 7. Gráfica(s) comparativa(s)
 
-*[Incluya aquí la(s) gráfica(s) comparativa(s).]*
+![imagen](https://user-images.githubusercontent.com/19277654/69586232-81cef300-0fa7-11ea-9d08-12a173b1a6d0.png)
 
 ## 8. Interpretación de los resultados
 
