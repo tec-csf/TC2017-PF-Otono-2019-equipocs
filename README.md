@@ -47,13 +47,21 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del problema
 
-*[El algoritmo de Dijkstra, creado por el científico Edseger Dijkstra en 1956, es un algoritmo que busca los caminos más cortos de un grafo, saliendo desde un vértice único hacia todos los vertices restantes del grafo (NIST, 2006). La manera en la que el algoritmo escoge su camino es por medio de los valores del peso de las aristas, específicamente los menores.]*
+*El algoritmo de Dijkstra, creado por el científico Edseger Dijkstra en 1956, es un algoritmo que busca los caminos más cortos de un grafo, saliendo desde un vértice único hacia todos los vertices restantes del grafo (NIST, 2006). La manera en la que el algoritmo escoge su camino es por medio de los valores del peso de las aristas, específicamente los menores.*
 
-*[En sí, el algoritmo de Dijkstra, funciona como una especialización de la [búsqueda de costo uniforme](https://algorithmicthoughts.wordpress.com/2012/12/15/artificial-intelligence-uniform-cost-searchucs/). Una característica básica del algoritmo, es que no funciona con aristas de coste negativo.]*
+*En sí, el algoritmo de Dijkstra, funciona como una especialización de la [búsqueda de costo uniforme](https://algorithmicthoughts.wordpress.com/2012/12/15/artificial-intelligence-uniform-cost-searchucs/). Una característica básica del algoritmo, es que no funciona con aristas de coste negativo. El proyecto tiene la finalidad de comparar el rendimiento del algoritmo de Dijkstra en forma secuencial y en paralelo* 
 
 ## 3. Solución secuencial
 
-*[Incluya aquí la descripción de la solución secuencial.]*
+1. Dentro de un método llamado init(), se crea una matriz de NxN lados de forma aleatoria.
+    1 Los valores de la matriz que pertenezcan a la diagonal partiendo del punto matriz[0][0] al matriz[N][N] tienen que valer 0
+    
+    
+    1. Actual numbers don't matter, just that it's a number
+  1. Ordered sub-list
+    
+    
+    (Ciertos valores tienen que ser 0 porque no todos los nodos tienen conexión). En dicho método se edita la matriz para que la diagonal, partiendo del punto matriz[0][0] al matriz[N][N], valgan 0.        *
 
 ## 4. Análisis de los inhibidores del paralelismo
 
