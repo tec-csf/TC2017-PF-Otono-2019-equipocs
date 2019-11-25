@@ -75,12 +75,15 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 En Paralelo con diferentes numeros de threads
 
 32 threads
-Tamaño de entrada	Tiempo
-50,000	31.089246 segundos
-20,000	9.171961 segundos
-10,000	4.235772 segundos
-5,000	2.148778 segundos
-1,000	0.447259 segundos
+
+| Tamaño de entrada | Tiempo |
+| ------------- | ------------- |
+| 50,000  | 31.089246 segundos  |
+| 20,000 | 9.171961 segundos  |
+| 10,000  | 4.235772 segundos  |
+|  5,000 |  2.148778 segundos |
+|  1,000 | 0.447259 segundos  |
+
 	
 
 16 threads
