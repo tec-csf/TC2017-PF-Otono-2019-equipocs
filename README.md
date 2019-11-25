@@ -140,6 +140,14 @@ En Paralelo con diferentes numeros de threads
 |  5,000 |  0.757593 segundos |
 |  1,000 | 0.052634 segundos  |
 
+Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 diferentes (Dynamic, Guided, Static y Auto) el numero de entrada era de 10,000 nodos y los threads fueron X.
+
+| Tipo de scheduler| Tiempo |
+| ------------- | ------------- |
+| Dynamic  | 5.0482 segundos  |
+| Guided | 1.60632 segundos  |
+| Static  | 1.57927 segundos |
+|  Auto |  1.54247 segundos |
 
 
 
