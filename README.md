@@ -47,9 +47,9 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del problema
 
-*El algoritmo de Dijkstra, creado por el científico Edseger Dijkstra en 1956, es un algoritmo que busca los caminos más cortos de un grafo, saliendo desde un vértice único hacia todos los vertices restantes del grafo (NIST, 2006). La manera en la que el algoritmo escoge su camino es por medio de los valores del peso de las aristas, específicamente los menores.*
+El algoritmo de Dijkstra, creado por el científico Edseger Dijkstra en 1956, es un algoritmo que busca los caminos más cortos de un grafo, saliendo desde un vértice único hacia todos los vertices restantes del grafo (NIST, 2006). La manera en la que el algoritmo escoge su camino es por medio de los valores del peso de las aristas, específicamente los menores.
 
-*En sí, el algoritmo de Dijkstra, funciona como una especialización de la [búsqueda de costo uniforme](https://algorithmicthoughts.wordpress.com/2012/12/15/artificial-intelligence-uniform-cost-searchucs/). Una característica básica del algoritmo, es que no funciona con aristas de coste negativo. El proyecto tiene la finalidad de comparar el rendimiento del algoritmo de Dijkstra en forma secuencial y en paralelo* 
+En sí, el algoritmo de Dijkstra, funciona como una especialización de la [búsqueda de costo uniforme](https://algorithmicthoughts.wordpress.com/2012/12/15/artificial-intelligence-uniform-cost-searchucs/). Una característica básica del algoritmo, es que no funciona con aristas de coste negativo. El proyecto tiene la finalidad de comparar el rendimiento del algoritmo de Dijkstra en forma secuencial y en paralelo
 
 ## 3. Solución secuencial
 
@@ -57,6 +57,22 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
     1. Los valores de la matriz que pertenezcan a la diagonal partiendo del punto *matriz[0][0]* al *matriz[N][N]* tienen que valer 0.
     2. No todos los valores (exceptuando la diagonal) tienen que tener un número aleatoria del rango que se escoga, ya que no todos los nodos tienen unión. Para esto, se le asigna a algunos valores *i4_huge = 2147483647* o *inf*.
     3. Los valores deben ser simétricos a la otra mitad.
+    4. El rango de los valores que se introducen al azar son entre 0 y N para poder mostrar un resultado fijo. 
+    
+**NOTA:** La matriz que se genere con un N valores, será la misma siempre. Es decir, el tiempo de ejecucción y el rendimiento no depende de la matriz, sino del algoritmo de Dijkstra.
+
+Ejemplo de matriz que se genera (10x10):
+
+| 0  |  8|  Inf  Inf | Inf | Inf  |  9 | Inf  |  2 | Inf|
+| 8  |  0 | Inf  Inf |   9 |   7 | Inf  |  9 | Inf | Inf|
+| Inf | Inf |   0   | 0 |   9  |  9  |  7  Inf |   6  |  5|
+| Inf | Inf |   0  |  0 | Inf | Inf | Inf | Inf | Inf | Inf|
+| Inf |   9 |   9 | Inf |   0 | Inf |   8  |  5 |   5 | Inf|
+| Inf |   7 |   9 | Inf | Inf |   0 |   8 | Inf  |  5 | Inf|
+| 9 | Inf  |  7 | Inf |   8  |  8  |  0   | 8   | 7  |Inf|
+| Inf |   9 | Inf  |Inf |   5 | Inf  |  8   | 0  |  4 | Inf|
+| 2 | Inf  |  6 | Inf |   5  |  5 |   7   | 4 |   0  |  1|
+| Inf | Inf  |  5 | Inf | Inf | Inf | Inf | Inf  |  1  |  0 |
     
 2. Se construye un árbol con el nodo 0 de inicio. 
 3. Se busca entre **todos los nodos no conectados** al árbol el nodo cuya distancia es menor. Una vez seleccionado, se conecta al árbol.
@@ -84,7 +100,6 @@ En Paralelo con diferentes numeros de threads
 |  5,000 |  2.148778 segundos |
 |  1,000 | 0.447259 segundos  |
 
-	
 
 16 threads
 
