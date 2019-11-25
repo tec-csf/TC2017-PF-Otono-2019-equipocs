@@ -1,4 +1,4 @@
-# *[Poner aquí el Título del Proyecto]*
+# *[Dijkstra secuencial y en paralelo]*
 ---
 #### Materia: *Análisis y Diseño de Algoritmos (TC2017)*
 
@@ -7,8 +7,8 @@
 ##### Campus: *Santa Fe*
 
 ##### Integrantes:
-1. *[Poner aquí Nombre y Apellidos del integrante 1]* *[Matrícula]*
-2. *[Poner aquí Nombre y Apellidos del integrante 2]* *[Matrícula]*
+1. *[Sebastián Medina Medina]* *[A00822311]*
+2. *[Carlos de la Garza]* *[Matrícula]*
 
 ---
 ## 1. Aspectos generales
@@ -47,7 +47,9 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del problema
 
-*[Incluya aquí la descripción del problema a resolver.]*
+*[El algoritmo de Dijkstra, creado por el científico Edseger Dijkstra en 1956, es un algoritmo que busca los caminos más cortos de un grafo, saliendo desde un vértice único hacia todos los vertices restantes del grafo (NIST, 2006). La manera en la que el algoritmo escoge su camino es por medio de los valores del peso de las aristas, específicamente los menores.]*
+
+*[En sí, el algoritmo de Dijkstra, funciona como una especialización de la [búsqueda de costo uniforme](https://algorithmicthoughts.wordpress.com/2012/12/15/artificial-intelligence-uniform-cost-searchucs/). Una característica básica del algoritmo, es que no funciona con aristas de coste negativo.]*
 
 ## 3. Solución secuencial
 
