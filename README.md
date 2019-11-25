@@ -72,8 +72,59 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 *[Incluya aquí la descripción de la solución paralela.]*
 
 ## 6. Tabla de resultados
+En Paralelo con diferentes numeros de threads
 
-*[Incluya aquí la tabla con los resultados de las mediciones.]*
+32 threads
+Tamaño de entrada	Tiempo
+50,000	31.089246 segundos
+20,000	9.171961 segundos
+10,000	4.235772 segundos
+5,000	2.148778 segundos
+1,000	0.447259 segundos
+	
+
+16 threads
+Tamaño de entrada	Tiempo
+50,000	24.698513 segundos
+20,000	5.418103 segundos
+10,000	2.144412 segundos
+5,000	0.961377 segundos
+1,000	0.200715 segundos
+	
+
+8 threads
+Tamaño de entrada	Tiempo
+50,000	13.576044 segundos
+20,000	3.581652 segundos
+10,000	1.087213 segundos
+5,000	0.394131 segundos
+1,000	0.110567 segundos
+
+4 threads
+Tamaño de entrada	Tiempo
+50,000	20.781091 segundos
+20,000	3.922936 segundos
+10,000	1.039789 segundos
+5,000	0.299548 segundos
+1,000	0.040850 segundos
+
+2 threads
+Tamaño de entrada	Tiempo
+50,000	38.237932 segundos
+20,000	6.331394 segundos
+10,000	1.560365 segundos
+5,000	0.421739 segundos
+1,000	0.053920 segundos
+
+1 thread
+Tamaño de entrada	Tiempo
+50,000	72.038223 segundos
+20,000	11.659691 segundos
+10,000	2.920091 segundos
+5,000	0.757593 segundos
+1,000	0.052634 segundos
+
+
 
 ## 7. Gráfica(s) comparativa(s)
 
