@@ -77,6 +77,8 @@ Ejemplo de matriz que se genera (10x10):
 *[Incluya aquí la descripción de la solución paralela.]*
 
 ## 6. Tabla de resultados
+
+![imagen](https://github.com/tec-csf/TC2017-PF-Otono-2019-equipocs/tree/master/docs)
 En Paralelo con diferentes numeros de threads
 
 
