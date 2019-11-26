@@ -71,7 +71,7 @@ Ejemplo de matriz que se genera (10x10):
 5. Una vez todos los nodos conectados a 0, se calculan las distancias mínimas del nodo 0 a todos los nodos restantes.
 6. La distancia mínima del 0 a cada nodo respectivamente se imprime y la matriz original se imprime. 
 
-[Link al código]()
+[Link al código](https://github.com/tec-csf/TC2017-PF-Otono-2019-equipocs/blob/master/Secuencial/dijkstra.c)
 
 ## 4. Análisis de los inhibidores del paralelismo
 
@@ -128,7 +128,7 @@ A diferencia con la solución secuencial, la solución paralela fue de la siguie
 6. Una vez que todos los nodos de cada thread estén conectados a el nodo 0 (por lo tanto ordenados), se busca una distancia mas corta usando los grupos restantes. En este paso, los threads se ejecutan individualmente y se va juntando los distintos grupos de nodos (Ya que los nodos ya estan ordenados esto puede hacer que el agoritmo vaya mas rapido).
 7. Una vez que todos los nodos estan ordenados, La matriz y la distancia mínima del al nodo cero se imprimen respectivamente.
 
-[Link al código]()
+[Link al código](https://github.com/tec-csf/TC2017-PF-Otono-2019-equipocs/blob/master/Paralelo/dijkstraPar.c)
 
 ## 6. Tabla de resultados
 
@@ -168,7 +168,7 @@ Una vez ejecutado todos las entradas con diferentes threads se pueden interpreta
 
 Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se pueden ejecutar diferentes tareas simultáneamente por la dependencia que tienen con los nodos conectados. En el caso de Dijkstra, ciertos métodos generan una ventaja al paralizar porque no requiere de ninguna dependencia. 
 
-** Es importante aclarar, que la velocidad en parte depende de como están acomodados los valores de la matriz y cómo se divide entre los threads. En este caso, el tiempo mejoró cuando se ejecutaron 8 threads y 50,000 entradas. Esto pasa porque al paralelizar el algoritmo las entradas se dividen entre el numero de threads y se crean grupo, separar los nodos por threads puede mejorar el tiempo que toma solucionar el algoritmo siempre y cuando no se sobre separen los nodos. Los grupos de nodos se van ordenando conforme a su nodo inicial por los threads paralelamente. Sin embargo, cuando se juntan todos los grupos de nodos y se ordenan esto se hace secuencialmente por lo tanto separar los nodos en demasiados grupos puede hacer que el algoritmo se tarde mas en llevarse acabo. 
+** Es importante aclarar, que la velocidad en parte depende de como están acomodados los valores de la matriz y cómo se divide entre los threads. En este caso, el tiempo mejoró cuando se ejecutaron 8 threads y 50,000 entradas. Esto pasa porque al paralelizar el algoritmo las entradas se dividen entre el numero de threads y se crean grupos. Separar los nodos por threads puede mejorar el tiempo que toma solucionar el algoritmo siempre y cuando no se sobre separen los nodos. Los grupos de nodos se van ordenando conforme a su nodo inicial por los threads paralelamente. Sin embargo, cuando se juntan todos los grupos de nodos y se ordenan esto se hace secuencialmente por lo tanto separar los nodos en demasiados grupos puede hacer que el algoritmo se tarde mas en llevarse acabo. 
 
 ## 9. Guía paso a paso
 
