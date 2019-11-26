@@ -78,7 +78,7 @@ Ejemplo de matriz que se genera (10x10):
 
 ## 6. Tabla de resultados
 
-![](docs/Resultado.png)
+![](docs/resultados.png)
 
 En Paralelo con diferentes numeros de threads
 
