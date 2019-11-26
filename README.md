@@ -177,7 +177,7 @@ Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se
     1. **IMPORTANTE:** debe tener instalado la última versión de gcc (en este caso debe ser la versión 9).
 3. Dentro de cada código, existe una variable definida al inicio llamada N. Ahí se puede manipular el número de entradas que se desean tener en la matriz. 
 
-# Secuencial:
+### Secuencial:
 
 1. Para correr el código secuencial que se llama "dijkstra.c" debe de ingresar los siguientes comandos:
 
@@ -185,7 +185,7 @@ Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se
         $ ./a.out
         
 
-# Paralelo:
+### Paralelo:
 
 1. Para correr el código paralelo que se llama "dijkstraPar.c" debe de ingresar los siguientes comandos:
 
