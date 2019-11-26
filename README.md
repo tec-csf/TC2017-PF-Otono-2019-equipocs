@@ -165,6 +165,8 @@ Una vez ejecutado todos las entradas con diferentes threads se pueden interpreta
 * Mientras el número de threads sea menor y el número de entradas sea mayor y viceversa, el tiempo de ejecucción tomará mucho tiempo.
 * El balanceo más rápido registrado con 10,000 entradas fue el de *auto*, el cual es el que ejecuta por default. Muy cerca de *auto*, se encuentra *static* y *guided* que tienen una estructura muy similar al ejecturar un for.
 * El algoritmo de Dijkstra no permite que su balanceo se ejecute de forma dinámica, ya que alarga el tiempo casi 4 veces más.
+* La complejidad del algoritmo secuencial en el peor caso O(V^2)
+* La complejidad del algoritmo paralelo en el peor caso es O((V^2/P)+V*log(P))
 
 Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se pueden ejecutar diferentes tareas simultáneamente por la dependencia que tienen con los nodos conectados. En el caso de Dijkstra, ciertos métodos generan una ventaja al paralizar porque no requiere de ninguna dependencia. 
 
