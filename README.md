@@ -78,8 +78,14 @@ Ejemplo de matriz que se genera (10x10):
 Durante el proceso de paralización encontramos ciertos inhibidores que destacaron:
 
 1. Nuestro código y la mayoría de los algoritmos de grafos, necesitan de la implementación de ```#pragma omp barrier``` para poder funcionar adecuadamente. Esta función sirve específicamente para evitar que algún thread siga ejecutando sin que los demás no hayan terminado el proceso anterior. Claramente, el tiempo de ejecucción es mayor. Existe una forma de evitarlos y es con la función de ```nowait``` que va tanto en un ```#pragma omp parallel for``` como en un ```#pragma omp sections```. 
+
 Como nuestro código no está paralelizado en función a un ```for```, sino a una región del código, la única solución era la implementación de ```#pragma omp sections nowait```. Sin embargo, no puede existir un ```#pragma omp single``` dentro, ya que su función es ejecutar su interior solamente por un thread; lo contrario a la función de ```nowait```.
+
 Si se eliminan los ```#pragma omp single```, el resultado es alterado el número de threads que el usuario seleccionó. 
+
+2. Como se mencionó previamente, el código no se paralelizó conforme un loop, sino conforme a una región importante. Esto fue porque es necesario la intervención de funciones directivas de OMP como *critical, single* y *barrier*
+
+3. Para utilizar el balanceo de ```shedule()``` era necesario ubicarlo en un for. Para eficientizar el proceso de paralelización se implementó en los métodos de *buscar el más cercano* y el de *actualizar la distancia mínima*. El resultado de esto no es muy notorio si no se utiliza ninguno, exceptuando ```shedule(dynamic)``` que tarda más tiempo en ejecutarse.
 
 ## 5. Solución paralela
 
@@ -166,16 +172,40 @@ Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se
 
 ## 9. Guía paso a paso
 
-[Incluya aquí la guía para la ejecución de los códigos.]
+1. Clonar la carpeta en tu ordenador. ¡
+2. Abrir la terminal en donde podrá ejecutar lineas de comando. 
+    1. **IMPORTANTE:** debe tener instalado la última versión de gcc (en este caso debe ser la versión 9).
+3. Dentro de cada código, existe una variable definida al inicio llamada N. Ahí se puede manipular el número de entradas que se desean tener en la matriz. 
+
+# Secuencial:
+
+1. Para correr el código secuencial que se llama "dijkstra.c" debe de ingresar los siguientes comandos:
+
+        $ gcc dijkstra.c
+        $ ./a.out
+        
+
+# Paralelo:
+
+1. Para correr el código paralelo que se llama "dijkstraPar.c" debe de ingresar los siguientes comandos:
+
+        $ gcc-9 -fopenmp dijkstra.c
+        $ ./a.out
+        
+2. Para manipular el número de threads que desea, escribir la línea de comando ```$ export OMP_NUM_THREADS=<Número>``` previo al ```./a.out```. Mayor información revisar referencia [4].
+3. Para manipular el balanceo del algoritmo, escribir la línea de comando ```$ export OMP_SCHEDULE=<Balanceo>``` previo al ```./a.out```. Mayor información revisar referencia [1].
+        
+
+
 
 ## 10. Referencias
 
-OpenMP: For & Scheduling. (2016, 13 junio). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/06/omp-for-scheduling.html
+[1] OpenMP: For & Scheduling. (2016, 13 junio). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/06/omp-for-scheduling.html
 
-OpenMP: Barrier. (2016, 11 junio). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/07/omp-barrier.html
+[2] OpenMP: Barrier. (2016, 11 junio). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/07/omp-barrier.html
 
-DIJKSTRA_OPENMP - Dijkstra Graph Distance Algorithm using OpenMP. (2010, 2 julio). Recuperado 26 noviembre, 2019, de https://people.sc.fsu.edu/%7Ejburkardt/c_src/dijkstra_openmp/dijkstra_openmp.html
+[3] DIJKSTRA_OPENMP - Dijkstra Graph Distance Algorithm using OpenMP. (2010, 2 julio). Recuperado 26 noviembre, 2019, de https://people.sc.fsu.edu/%7Ejburkardt/c_src/dijkstra_openmp/dijkstra_openmp.html
+
+[4] OpenMP: Introduction. (2016, 25 abril). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/04/omp-introduction.html
 
 
-
-[Incluya aquí las referencias a sitios de interés y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]
