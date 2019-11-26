@@ -82,7 +82,6 @@ A continuación estará la tabla de los resultados de los tiempos de ejecucción
 
 ![](docs/resultados.png)
 
-
 Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 diferentes (Dynamic, Guided, Static y Auto) el numero de entrada era de 10,000 nodos y los threads fueron 4.
 
 | Tipo de scheduler| Tiempo |
@@ -96,16 +95,18 @@ Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 
 
 ## 7. Gráfica(s) comparativa(s)
 
+Relación de tiempo con el número de entradas.
 
 ![](docs/graficaTE.png)
-Figura 2: Relación de tiempo con el número de entradas.
 
+Relación del balanceo con el número de entradas.
 
 ![imagen](https://user-images.githubusercontent.com/19277654/69586980-ccea0580-0fa9-11ea-8395-f353ca5a58d6.png)
 
 ## 8. Interpretación de los resultados
 
-[Incluya aquí la interpretación de los resultados.]
+Como se puede notar en las tablas y en las graficas de la parte de arriba cuando la cantidad de nodos es más alta usar más threads tiene mejor rendimiento. Sin embargo, usar demasiados threads puede hacer que el algoritmo corra mas lento. Cuando usamos un numero de nodos más chico usar numero menor de threads es lo ideal ya que lo demás puede hacer que el algoritmo vaya más lento.
+En cuanto a los schedulers el mas eficiente en la prueba que hicimos fue el auto, el único que si tuvo un tiempo mucho mas lento fue el Dynamic el cual tardo mas de 3 veces mas.
 
 ## 9. Guía paso a paso
 
