@@ -75,7 +75,11 @@ Ejemplo de matriz que se genera (10x10):
 
 ## 4. Análisis de los inhibidores del paralelismo
 
-[Incluya aquí el análisis de los inhibidores presentes en su problema, así como la solución a los mismos.]
+Durante el proceso de paralización encontramos ciertos inhibidores que destacaron:
+
+1. Nuestro código y la mayoría de los algoritmos de grafos, necesitan de la implementación de ```#pragma omp barrier``` para poder funcionar adecuadamente. Esta función sirve específicamente para evitar que algún thread siga ejecutando sin que los demás no hayan terminado el proceso anterior. Claramente, el tiempo de ejecucción es mayor. Existe una forma de evitarlos y es con la función de ```nowait``` que va tanto en un ```#pragma omp parallel for``` como en un ```#pragma omp sections```. 
+Como nuestro código no está paralelizado en función a un ```for```, sino a una región del código, la única solución era la implementación de ```#pragma omp sections nowait```. Sin embargo, no puede existir un ```#pragma omp single``` dentro, ya que su función es ejecutar su interior solamente por un thread; lo contrario a la función de ```nowait```.
+Si se eliminan los ```#pragma omp single```, el resultado es alterado el número de threads que el usuario seleccionó. 
 
 ## 5. Solución paralela
 
@@ -148,12 +152,12 @@ Relación del balanceo con el tiempo de ejecucción.
 
 ## 8. Interpretación de los resultados
 
-Una vez ejecutado todos las entradas con diferentes threads se pueden interpretar las siguientes cosas.
+Una vez ejecutado todos las entradas con diferentes threads se pueden interpretar las siguientes cosas:
 
 * Mientras el número de threads sea mayor y el número de entradas sea muy grande, el tiempo de ejecucción será más rápido. **¿Por qué?** Al tener muchos nodos que puedan ser almacenados en diferentes threads y que las tareas de *buscar al más cercano* y *actualizar la menor distancia* se puedan ejecutar al mismo tiempo, ahorra mayor tiempo. **
 * Mientras el número de threads sea menor y el número de entradas sea muy pequeño, el tiempo de ejecucción será más rápido. De hecho. múltiples algoritmos tienen mejor eficiencia al ser secuenciales cuando se cuenta con pocas N entradas.
 * Mientras el número de threads sea menor y el número de entradas sea mayor y viceversa, el tiempo de ejecucción tomará mucho tiempo.
-* El balanceo más rápido registrado con 10,000 entradas fue el de *auto*, el cual es el que ejecuta por default. Muy cerca de *auto*, se encuentra static y guided que tienen una estructura muy similar al ejecturar un for.
+* El balanceo más rápido registrado con 10,000 entradas fue el de *auto*, el cual es el que ejecuta por default. Muy cerca de *auto*, se encuentra *static* y *guided* que tienen una estructura muy similar al ejecturar un for.
 * El algoritmo de Dijkstra no permite que su balanceo se ejecute de forma dinámica, ya que alarga el tiempo casi 4 veces más.
 
 Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se pueden ejecutar diferentes tareas simultáneamente por la dependencia que tienen con los nodos conectados. En el caso de Dijkstra, ciertos métodos generan una ventaja al paralizar porque no requiere de ninguna dependencia. 
@@ -165,6 +169,12 @@ Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se
 [Incluya aquí la guía para la ejecución de los códigos.]
 
 ## 10. Referencias
+
+OpenMP: For & Scheduling. (2016, 13 junio). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/06/omp-for-scheduling.html
+
+OpenMP: Barrier. (2016, 11 junio). Recuperado 26 noviembre, 2019, de http://jakascorner.com/blog/2016/07/omp-barrier.html
+
+DIJKSTRA_OPENMP - Dijkstra Graph Distance Algorithm using OpenMP. (2010, 2 julio). Recuperado 26 noviembre, 2019, de https://people.sc.fsu.edu/%7Ejburkardt/c_src/dijkstra_openmp/dijkstra_openmp.html
 
 
 
