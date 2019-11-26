@@ -113,10 +113,12 @@ A diferencia con la solución secuencial, la solución paralela fue de la siguie
        P7:  Primer valor=8750  Último valor=9999
 
 3. Cada thread ejecuta individualmente la búsqueda de la distancia menor al nodo 0. Una vez seleccionada, se van agregando al nodo 0. En este paso, los threads se ejecutan al mismo tiempo.
-4. Los threads pasan a verificar que la distancia de sus nodos ya registrada, sea la más pequeña de sus nodos. Si no es la más pequeñan, se sustituyen los valores. Esta operación la hacen una a la vez. 
+4. Los threads pasan a verificar que la distancia de sus nodos ya registrada, sea la más pequeña de sus nodos. Si no es la más pequeña, se sustituyen los valores. Esta operación la hacen una a la vez. 
 5. En caso de que algún thread haya encontrado un nodo sin conexión, se asigna un valor de 1.
 5. Una vez que todos los nodos de cada thread estén conectados a 0, se calculan las distancias mínimas del nodo 0 a todos los restantes. En este paso, los threads se ejecutan al mismo tiempo.
-6. La distancia mínima del 0 a cada nodo respectivamente se imprime y la matriz original se imprime. 
+6. La matriz y la distancia mínima del 0 a cada nodo respectivamente se imprime.
+
+[Link al código]()
 
 ## 6. Tabla de resultados
 
@@ -140,21 +142,30 @@ Relación de tiempo con el número de entradas.
 
 ![](docs/graficaTE.png)
 
-Relación del balanceo con el número de entradas.
+Relación del balanceo con el tiempo de ejecucción.
 
 ![](docs/graficaBT.png)
 
 ## 8. Interpretación de los resultados
 
+Una vez ejecutado todos las entradas con diferentes threads se pueden interpretar las siguientes cosas.
 
+* Mientras el número de threads sea mayor y el número de entradas sea muy grande, el tiempo de ejecucción será más rápido. **¿Por qué?** Al tener muchos nodos que puedan ser almacenados en diferentes threads y que las tareas de *buscar al más cercano* y *actualizar la menor distancia* se puedan ejecutar al mismo tiempo, ahorra mayor tiempo. **
+* Mientras el número de threads sea menor y el número de entradas sea muy pequeño, el tiempo de ejecucción será más rápido. De hecho. múltiples algoritmos tienen mejor eficiencia al ser secuenciales cuando se cuenta con pocas N entradas.
+* Mientras el número de threads sea menor y el número de entradas sea mayor y viceversa, el tiempo de ejecucción tomará mucho tiempo.
+* El balanceo más rápido registrado con 10,000 entradas fue el de *auto*, el cual es el que ejecuta por default. Muy cerca de *auto*, se encuentra static y guided que tienen una estructura muy similar al ejecturar un for.
+* El algoritmo de Dijkstra no permite que su balanceo se ejecute de forma dinámica, ya que alarga el tiempo casi 4 veces más.
 
-Como se puede notar en las tablas y en las graficas de la parte de arriba cuando la cantidad de nodos es más alta usar más threads tiene mejor rendimiento. Sin embargo, usar demasiados threads puede hacer que el algoritmo corra mas lento. Cuando usamos un numero de nodos más chico usar numero menor de threads es lo ideal ya que lo demás puede hacer que el algoritmo vaya más lento.
-En cuanto a los schedulers el mas eficiente en la prueba que hicimos fue el auto, el único que si tuvo un tiempo mucho mas lento fue el Dynamic el cual tardo mas de 3 veces mas.
+Un algoritmo que manipule un grafo, es muy complejo de paralelizar, ya que no se pueden ejecutar diferentes tareas simultáneamente por la dependencia que tienen con los nodos conectados. En el caso de Dijkstra, ciertos métodos generan una ventaja al paralizar porque no requiere de ninguna dependencia. 
+
+** Es importante aclarar, que la velocidad en parte depende de como están acomodados los valores de la matriz y cómo se divide con los threads. En este caso, el tiempo mejoró cuando se ejecutaron 8 threads y 50,000 entradas. Sin embargo, por naturaleza, mientras existe un mayor número de threads será mejor.
 
 ## 9. Guía paso a paso
 
 [Incluya aquí la guía para la ejecución de los códigos.]
 
 ## 10. Referencias
+
+
 
 [Incluya aquí las referencias a sitios de interés y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]
