@@ -59,14 +59,19 @@ En sí, el algoritmo de Dijkstra, funciona como una especialización de la [bús
     3. Los valores deben ser simétricos a la otra mitad.
     4. El rango de los valores que se introducen al azar son entre 0 y N para poder mostrar un resultado fijo. 
     
-*NOTA:* La matriz que se genere con un N valores, será la misma siempre. Es decir, el tiempo de ejecucción y el rendimiento no depende de la matriz, sino del algoritmo de Dijkstra.
+*NOTA:* La matriz que se genere con un N valores, será la misma siempre. Es decir, el tiempo de ejecucción y el rendimiento no depende de los valores de la matriz, sino del algoritmo de Dijkstra.
 
 Ejemplo de matriz que se genera (10x10):
 
-2. Se construye un árbol con el nodo 0 de inicio. 
-3. Se busca entre *todos los nodos no conectados* al árbol el nodo cuya distancia es menor. Una vez seleccionado, se conecta al árbol.
-4. Se verifica que la distancia ya registrada, sea la más pequeña entre *todos los nodos no conectados*. Si es así, se intercambian los valores. 
+![](docs/matriz.png)
+
+2. Se inicia la construcción de un un árbol con el nodo 0 de inicio. (Esto puede ser editado dentro del código).
+3. Se busca entre **todos los nodos no conectados** al árbol el nodo cuya distancia es menor. Una vez seleccionado, se conecta al árbol.
+4. Se verifica que la distancia ya registrada, sea la más pequeña entre **todos los nodos no conectados**. Si es así, se intercambian los valores. 
 5. Una vez todos los nodos conectados a 0, se calculan las distancias mínimas del nodo 0 a todos los nodos restantes.
+6. La distancia mínima del 0 a cada nodo respectivamente se imprime y la matriz original se imprime. 
+
+[Link al código]()
 
 ## 4. Análisis de los inhibidores del paralelismo
 
@@ -74,7 +79,44 @@ Ejemplo de matriz que se genera (10x10):
 
 ## 5. Solución paralela
 
-[Incluya aquí la descripción de la solución paralela.]
+1. Se crea una matriz de NxN lados de forma aleatoria.
+    1. Los valores de la matriz que pertenezcan a la diagonal partiendo del punto matriz[0][0] al matriz[N][N] tienen que valer 0.
+    2. No todos los valores (exceptuando la diagonal) tienen que tener un número aleatoria del rango que se escoga, ya que no todos los nodos tienen unión. Para esto, se le asigna a algunos valores i4_huge = 2147483647 o inf.
+    3. Los valores deben ser simétricos a la otra mitad.
+    4. El rango de los valores que se introducen al azar son entre 0 y N para poder mostrar un resultado fijo. 
+    
+*NOTA:* La matriz que se genere con un N valores, será la misma siempre. Es decir, el tiempo de ejecucción y el rendimiento no depende de los valores de la matriz, sino del algoritmo de Dijkstra.
+
+Ejemplo de matriz que se genera (10x10):
+
+![](docs/matriz.png)
+
+A diferencia con la solución secuencial, la solución paralela fue de la siguiente forma:
+
+2. Se inicia la construcción de un un árbol con el nodo 0 de inicio. (Esto puede ser editado dentro del código). 
+3. El número de nodos asignados, son divididas entre la cantidad de threads que el usuario asigne. Ej:
+ 
+       Se asigna 10,000 valores de entrada en la variable N
+ 
+       $ export OMP_NUM_THREADS=8
+       $ ./a.out
+       
+       Output
+       
+       P2:  Primer valor=2500  Último valor=3749
+       P1:  Primer valor=1250  Último valor=2499
+       P3:  Primer valor=3750  Último valor=4999
+       P4:  Primer valor=5000  Último valor=6249
+       P0:  Primer valor=0     Último valor=1249
+       P6:  Primer valor=7500  Último valor=8749
+       P5:  Primer valor=6250  Último valor=7499
+       P7:  Primer valor=8750  Último valor=9999
+
+3. Cada thread ejecuta individualmente la búsqueda de la distancia menor al nodo 0. Una vez seleccionada, se van agregando al nodo 0. En este paso, los threads se ejecutan al mismo tiempo.
+4. Los threads pasan a verificar que la distancia de sus nodos ya registrada, sea la más pequeña de sus nodos. Si no es la más pequeñan, se sustituyen los valores. Esta operación la hacen una a la vez. 
+5. En caso de que algún thread haya encontrado un nodo sin conexión, se asigna un valor de 1.
+5. Una vez que todos los nodos de cada thread estén conectados a 0, se calculan las distancias mínimas del nodo 0 a todos los restantes. En este paso, los threads se ejecutan al mismo tiempo.
+6. La distancia mínima del 0 a cada nodo respectivamente se imprime y la matriz original se imprime. 
 
 ## 6. Tabla de resultados
 
@@ -82,7 +124,7 @@ A continuación estará la tabla de los resultados de los tiempos de ejecucción
 
 ![](docs/resultados.png)
 
-Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 diferentes (Dynamic, Guided, Static y Auto) el numero de entrada era de 10,000 nodos y los threads fueron 4.
+Para comparar el rendimiento del balanceo, se hizo una prueba con un número de entrada de 10,000 nodos y se utilizo el número de threads por default: 4. Estos fueron los resultados:
 
 | Tipo de scheduler| Tiempo |
 | ------------- | ------------- |
@@ -90,7 +132,6 @@ Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 
 | Guided | 1.60632 segundos  |
 | Static  | 1.57927 segundos |
 |  Auto |  1.54247 segundos |
-
 
 
 ## 7. Gráfica(s) comparativa(s)
@@ -101,9 +142,11 @@ Relación de tiempo con el número de entradas.
 
 Relación del balanceo con el número de entradas.
 
-![imagen](https://user-images.githubusercontent.com/19277654/69586980-ccea0580-0fa9-11ea-8395-f353ca5a58d6.png)
+![](docs/graficaBT.png)
 
 ## 8. Interpretación de los resultados
+
+
 
 Como se puede notar en las tablas y en las graficas de la parte de arriba cuando la cantidad de nodos es más alta usar más threads tiene mejor rendimiento. Sin embargo, usar demasiados threads puede hacer que el algoritmo corra mas lento. Cuando usamos un numero de nodos más chico usar numero menor de threads es lo ideal ya que lo demás puede hacer que el algoritmo vaya más lento.
 En cuanto a los schedulers el mas eficiente en la prueba que hicimos fue el auto, el único que si tuvo un tiempo mucho mas lento fue el Dynamic el cual tardo mas de 3 veces mas.
