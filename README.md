@@ -164,7 +164,9 @@ Para comparar que scheduler era mejor hicimos una prueba muy parecida con los 4 
 
 ## 8. Interpretación de los resultados
 
-*[Incluya aquí la interpretación de los resultados.]*
+Como se puede notar en las tablas y en las graficas de la parte de arriba cuando la cantidad de nodos es más alta usar más threads tiene mejor rendimiento. Sin embargo, usar demasiados threads puede hacer que el algoritmo corra mas lento. Cuando usamos un numero de nodos más chico usar numero menor de threads es lo ideal ya que lo demás puede hacer que el algoritmo vaya más lento.
+En cuanto a los schedulers el mas eficiente en la prueba que hicimos fue el auto, el único que si tuvo un tiempo mucho mas lento fue el Dynamic el cual tardo mas de 3 veces mas.
+
 
 ## 9. Guía paso a paso
 
